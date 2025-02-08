@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>res/image/copy16x16.png</file>
+        <file>res/image/cut16x16.png</file>
+        <file>res/image/logo.ico</file>
+        <file>res/image/logo.png</file>
+        <file>res/image/logo32_32.png</file>
+        <file>res/image/logo48_48.png</file>
+        <file>res/image/new16x16.png</file>
+        <file>res/image/open16x16.png</file>
+        <file>res/image/print16x16.png</file>
+        <file>res/image/redo16x16.png</file>
+        <file>res/image/save16x16.png</file>
+        <file>res/image/undo16x16.png</file>
+    </qresource>
+</RCC>

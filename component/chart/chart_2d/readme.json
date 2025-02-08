@@ -1,0 +1,20 @@
+﻿#property配置
+[
+    {
+        //property配置单元唯一标识
+        "uuid":12345,
+        //property配置单元名称
+        "desc":"coordinates type",
+        //property配置单元值，可以为当个值、数组、对象
+        "value":0
+    }
+    ,
+    {
+        //property配置单元唯一标识
+        "uuid":12356,
+        //property配置单元名称
+        "desc":"dot plot type",
+        //property配置单元值，可以为当个值、数组、对象
+        "value":1
+    }
+]

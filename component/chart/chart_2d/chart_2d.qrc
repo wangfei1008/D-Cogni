@@ -1,0 +1,5 @@
+﻿<RCC>
+    <qresource prefix="/">
+        <file>res/2D_32x32.png</file>
+    </qresource>
+</RCC>
