@@ -34,10 +34,10 @@ QStringList PROPERTY_GRAPH_TYPE{
 };
 
 //轴是否显示
-bool PROPERTY_AXIS_TOP_VISABLE = true;
+bool PROPERTY_AXIS_TOP_VISABLE = false;
 bool PROPERTY_AXIS_LEFT_VISABLE = true;
 bool PROPERTY_AXIS_BOTTOM_VISABLE = true;
-bool PROPERTY_AXIS_RIGHT_VISABLE = true;
+bool PROPERTY_AXIS_RIGHT_VISABLE = false;
 
 //是否支持自动缩放
 bool PROPERTY_AUTO_RESCALE = true;
@@ -45,3 +45,9 @@ bool PROPERTY_AUTO_RESCALE = true;
 //是否支持鼠标操作
 bool PROPERTY_INTERACTIONS_MOUSE = true;
 
+
+//每个通道图形矩形框四边标签
+QString  PROPERTY_CH_RECT_LABEL_LEFT = "rect left label";
+QString  PROPERTY_CH_RECT_LABEL_BOTTOM = "rect bottom label";
+QString  PROPERTY_CH_RECT_LABEL_RIGHT = "rect right label";
+QString  PROPERTY_CH_RECT_LABEL_TOP = "rect top label";

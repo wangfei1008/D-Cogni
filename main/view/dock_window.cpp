@@ -93,7 +93,7 @@ void DCDockWindow::styleIndexChanged(int index)
     QComboBox* comboBox = qobject_cast<QComboBox*>(sender());
     Q_ASSERT(comboBox != Q_NULL);
     QVariant var = comboBox->itemData(index);
-    AppStyle appStyle = static_cast<AppStyle>(var.toInt());
+    //AppStyle appStyle = static_cast<AppStyle>(var.toInt());
     //setCustomStyle(appStyle);
 }
 
@@ -384,29 +384,4 @@ void DCDockWindow::saveDockPanelSettings(QSettings& settings)
         Q_ASSERT(false);
     saveStateToDevice(Q_NULL, &buffer);
     settings.setValue(DockPanelSetting, QVariant(data));
-}
-
-void DCDockWindow::read_settings()
-{
-    QSettings settings(this);
-    AppStyle appStyle = static_cast<AppStyle>(settings.value(QStringLiteral("style"), static_cast<int>(Default)).toInt());
-    //setCustomStyle(appStyle);
-
-    QByteArray byte = settings.value(QStringLiteral("geometry")).toByteArray();
-    if (!byte.isEmpty())
-        restoreGeometry(byte);
-
-    loadDockToolBarSettings(settings);
-    loadDockPanelSettings(settings);
-}
-
-void DCDockWindow::write_settings()
-{
-    QSettings settings(this);
-
-    settings.setValue(QStringLiteral("style"), QString::number(static_cast<int>(0)));
-    QByteArray byte = saveGeometry();
-    settings.setValue(QStringLiteral("geometry"), byte);
-    saveDockToolBarSettings(settings);
-    saveDockPanelSettings(settings);
 }

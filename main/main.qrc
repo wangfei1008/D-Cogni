@@ -1,4 +1,4 @@
-<RCC>
+﻿<RCC>
     <qresource prefix="/">
         <file>res/image/copy16x16.png</file>
         <file>res/image/cut16x16.png</file>
@@ -12,5 +12,13 @@
         <file>res/image/redo16x16.png</file>
         <file>res/image/save16x16.png</file>
         <file>res/image/undo16x16.png</file>
+        <file>res/image/device/2001.png</file>
+        <file>res/image/device/2002.png</file>
+        <file>res/image/device/new_device.png</file>
+        <file>res/image/next16x16.png</file>
+        <file>res/image/refresh16x16.png</file>
+        <file>res/image/finish16x16.png</file>
+        <file>res/image/project64x64.png</file>
+        <file>res/image/firm_logo48x48.png</file>
     </qresource>
 </RCC>

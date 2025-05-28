@@ -17,6 +17,11 @@ menu_view_app_type::menu_view_app_type(QMenu* menu, QObject *parent)
     set_app_style(VS2019Blue);
 }
 
+menu_view_app_type::AppStyle menu_view_app_type::app_type()
+{
+    return m_app_style;
+}
+
 void menu_view_app_type::add_actions()
 {
     QMenu* menu = m_menu->addMenu(tr("Application Style..."));

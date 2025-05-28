@@ -354,3 +354,27 @@ DockWidgetPanel* MainWindow::createOpenGLPanel()
     panel->setWidget(glWidget);
     return panel;
 }
+
+void MainWindow::read_settings()
+{
+    QSettings settings(this);
+    menu_view_app_type::AppStyle app_style = static_cast<menu_view_app_type::AppStyle>(settings.value(QStringLiteral("style"), static_cast<int>(menu_view_app_type::AppStyle::Default)).toInt());
+    m_menu_view->menu_view_app_stype()->set_app_style(app_style);
+
+    QByteArray byte = settings.value(QStringLiteral("geometry")).toByteArray();
+    if (!byte.isEmpty()) restoreGeometry(byte);
+
+    loadDockToolBarSettings(settings);
+    loadDockPanelSettings(settings);
+}
+
+void MainWindow::write_settings()
+{
+    QSettings settings(this);
+
+    settings.setValue(QStringLiteral("style"), QString::number(static_cast<int>( m_menu_view->menu_view_app_stype()->app_type())));
+    QByteArray byte = saveGeometry();
+    settings.setValue(QStringLiteral("geometry"), byte);
+    saveDockToolBarSettings(settings);
+    saveDockPanelSettings(settings);
+}

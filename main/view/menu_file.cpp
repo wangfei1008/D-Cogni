@@ -1,4 +1,5 @@
 ﻿#include "menu_file.h"
+#include "new_project_window.h"
 
 menu_file::menu_file(QMenu* menu)\
     :m_menu(menu)
@@ -24,3 +25,25 @@ void menu_file::add_actions()
     connect(m_close, SIGNAL(triggered()), this, SLOT(slot_close()));
     m_menu->addAction(m_close);
 }
+
+void menu_file::slot_new()
+{
+    ProjectWindow* w = new ProjectWindow();
+    w->show();
+}
+
+void menu_file::slot_open()
+{
+
+}
+
+void menu_file::slot_save()
+{
+
+}
+
+void menu_file::slot_close()
+{
+
+}
+

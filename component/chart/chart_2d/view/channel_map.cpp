@@ -74,6 +74,18 @@ QStringList channel_map::all_channel_name() const
     return m_map.keys();
 }
 
+int channel_map::channel_name_index(const QString &id)
+{
+    int index = 0;
+    QStringList list =  m_map.keys();
+    for(auto it : list)
+    {
+        if(it == id) return index;
+        index++;
+    }
+    return -1;
+}
+
 channel_map::ChannelPlot channel_map::channel_plot(const QString &id)
 {
     if(m_map.contains(id))
@@ -167,6 +179,17 @@ int channel_map::set_plot_dot(const QString &id)
     ch.graph->setPen(pen);
     ch.graph->setLineStyle((QCPGraph::LineStyle)0);//设置线性
     ch.graph->setScatterStyle(QCPScatterStyle(QCPScatterStyle::ssDot, 4));//设置每个节点数据绘制风格，默认是空，这里设置为空心圆
+
+    return RES_SUCCESS;
+}
+
+int channel_map::set_axis_label(const QString &id, QCPAxis::AxisType type, const QString &label)
+{
+    ChannelPlot ch = channel_plot(id);
+    if(ch.graph == NULL || ch.rect == NULL) return RES_ERR_IPUT_PARM;
+
+    if(label.length() > 0)
+        ch.rect->axis(type, ch.axis_index[type])->setLabel(label);
 
     return RES_SUCCESS;
 }

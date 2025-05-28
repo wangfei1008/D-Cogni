@@ -5,6 +5,7 @@
 #include <QObject>
 #include <QAction>
 #include "dock_window.h"
+#include "menu_view_app_type.h"
 
 class menu_view : public QObject
 {
@@ -19,6 +20,7 @@ public:
 public:
     explicit menu_view(QMenu* menu, DCDockWindow* dock = nullptr, QObject *parent = nullptr);
     QStringList panel_names(PanelType type);
+    menu_view_app_type *menu_view_app_stype();
 private:
     void add_actions();
 private Q_SLOTS:
@@ -35,6 +37,7 @@ private:
     QAction                      *m_data_attribute;
     QAction                      *m_data_command;
     QAction                      *m_set_attribute;
+    menu_view_app_type           *m_app_type;
 };
 
 #endif // MENU_VIEW_H

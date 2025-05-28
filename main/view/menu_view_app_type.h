@@ -19,11 +19,12 @@ public:
     };
 public:
     explicit menu_view_app_type(QMenu* menu, QObject *parent = nullptr);
+    AppStyle app_type();
+    void set_app_style(AppStyle style);                                     //设置APP显示风格
 private:
     void add_actions();
 
-    //设置APP显示风格
-    void set_app_style(AppStyle style);
+
 private Q_SLOTS:
     void slot_style_changed(QAction* action);
 private:

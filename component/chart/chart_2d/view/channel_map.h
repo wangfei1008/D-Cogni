@@ -18,6 +18,7 @@ public:
         QCPGraph*      graph;                               //通道所对应的曲线
         QString        id;                                   //通道名称或者唯一id
         QColor         color;                                //通道使用的颜色
+        QString        axis_label[QCPAxis::atBottom + 1];    //矩形轴标签名称
 
         ChannelPlot()
         {
@@ -26,7 +27,6 @@ public:
             id = "";
             color = RandomColor();
         }
-
 
         QColor RandomColor()// 创建一个随机颜色
         {
@@ -46,6 +46,7 @@ protected:
     int add_data(const QString& id, const QVector<double>& key, const QVector<double>& value, QCPAxisRect** rect);
     bool contains(const QString&id);
     QStringList all_channel_name() const;
+    int channel_name_index(const QString& id);
     ChannelPlot channel_plot(const QString& id);
     void data(const QString& id, QVector<double>& key, QVector<double>& value);
 
@@ -68,6 +69,8 @@ protected:
     int set_axis_random_color(const QString& id, QCPAxis::AxisType type);
     //设置按照点形式显示
     int set_plot_dot(const QString& id);
+    //设置轴标签名称
+    int set_axis_label(const QString& id, QCPAxis::AxisType type, const QString& label);
 
 protected:
     QMap<QString, ChannelPlot>                       m_map;	                         //动态增加删除通道所对应的曲线图

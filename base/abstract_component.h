@@ -56,6 +56,9 @@ public:
     //追加数据
     virtual int add_data(const QString& id, const QVector<double>& x, const QVector<double>& y) = 0;
 
+    //数据绘制
+    virtual int replot() = 0;
+
     ////////////////////////////////////////////////////////////////////////////////////////
     ///第三部分：输出接口
     //获取属性配置界面句柄

@@ -29,6 +29,9 @@ private:
     void createToolBar();
     void createStatusBar();
     QWidget* createMdiChild();
+
+    void read_settings();                                                //读取注册文件本执行程序配置
+    void write_settings();                                               //对注册文件写本执行程序配置
 protected Q_SLOTS:
     void slot_createForm();
     void slot_createTree();

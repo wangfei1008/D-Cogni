@@ -56,6 +56,24 @@ bool plot_business_data::axis_visable(int index)
     return false;
 }
 
+QString plot_business_data::axis_label(int ch, int index)
+{
+    unsigned long long id = 0;
+    if(index == 1) id =(unsigned long long)&PROPERTY_CH_RECT_LABEL_LEFT;
+    if(index == 2) id =(unsigned long long)&PROPERTY_CH_RECT_LABEL_RIGHT;
+    if(index == 4) id =(unsigned long long)&PROPERTY_CH_RECT_LABEL_TOP;
+    if(index == 8) id =(unsigned long long)&PROPERTY_CH_RECT_LABEL_BOTTOM;
+
+    DataUnit u = _data_unit(id);
+    if(u.uuid != 0)
+    {
+        QStringList list = u.value.toStringList();
+        if(ch >= 0 && ch < list.size())  return list[ch];
+    }
+
+    return QString();
+}
+
 bool plot_business_data::auto_scale()
 {
     DataUnit u = _data_unit((unsigned long long)&PROPERTY_AUTO_RESCALE);

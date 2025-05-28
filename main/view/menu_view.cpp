@@ -1,5 +1,5 @@
 ﻿#include "menu_view.h"
-#include "menu_view_app_type.h"
+
 
 menu_view::menu_view(QMenu* menu, DCDockWindow* dock, QObject *parent)
     : QObject{parent}
@@ -12,6 +12,11 @@ menu_view::menu_view(QMenu* menu, DCDockWindow* dock, QObject *parent)
 QStringList menu_view::panel_names(PanelType type)
 {
     return QStringList();
+}
+
+menu_view_app_type *menu_view::menu_view_app_stype()
+{
+    return m_app_type;
 }
 
 void menu_view::add_actions()
@@ -55,7 +60,7 @@ void menu_view::add_actions()
     m_menu->addSeparator();
 
     //apptype
-    menu_view_app_type* apptype = new menu_view_app_type(m_menu);
+    m_app_type= new menu_view_app_type(m_menu);
 }
 
 void menu_view::slot_triggered(bool checked)

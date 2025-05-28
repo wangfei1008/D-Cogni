@@ -32,15 +32,6 @@ class DCDockWindow: public DockMainWindow
 {
     Q_OBJECT
 public:
-    enum AppStyle
-    {
-        Default     = 0,
-        Fusion      = 1,
-        VS2019Blue  = 2,
-        VS2019Dark  = 3,
-        VS2019Light = 4,
-    };
-public:
     explicit DCDockWindow(QWidget* parent = Q_NULL);
     virtual ~DCDockWindow();
     WindowTitleBar* titleBar() const;
@@ -63,8 +54,6 @@ protected:
     void loadDockPanelSettings(const QSettings& settings);
     void saveDockPanelSettings(QSettings& settings);
 
-    void read_settings();                                                //读取注册文件本执行程序配置
-    void write_settings();                                               //对注册文件写本执行程序配置
 protected Q_SLOTS:
     //void styleChanged(QAction* action);
     void styleIndexChanged(int index);

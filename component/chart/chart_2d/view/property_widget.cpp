@@ -2,6 +2,7 @@
 #include "chart_constants.h"
 #include "chart_macros.h"
 #include <QCheckBox>
+#include <QLineEdit>
 
 property_widget::property_widget(property_data* data, QWidget *parent)
     : QWidget{parent}
@@ -62,6 +63,19 @@ void property_widget::_init()
             check->setText("show/hide");
             m_form_layout->setWidget(i, QFormLayout::FieldRole, check);
         }
+
+        //QLineEdit类型
+        if(    ((unsigned long long)&PROPERTY_CH_RECT_LABEL_LEFT == unit.uuid)
+            || ((unsigned long long)&PROPERTY_CH_RECT_LABEL_RIGHT == unit.uuid)
+            || ((unsigned long long)&PROPERTY_CH_RECT_LABEL_BOTTOM == unit.uuid)
+            || ((unsigned long long)&PROPERTY_CH_RECT_LABEL_TOP == unit.uuid)
+            )
+        {
+            QLineEdit *edit = new QLineEdit(this);
+            edit->setObjectName(unit.desc.replace(" ", "_"));
+            edit->setText(unit.value.toString());
+            m_form_layout->setWidget(i, QFormLayout::FieldRole, edit);
+        }
     }
 
     //3、布局下发按键
@@ -103,6 +117,22 @@ void property_widget::on_button_ok_clicked()
             if(desc.replace(" ", "_") == ck->objectName())
             {
                 u.value = ck->isChecked();
+                datas[i] = u;
+                break;
+            }
+        }
+    }
+
+    QList<QLineEdit *> les = findChildren<QLineEdit *>();
+    foreach (QLineEdit *le, les)
+    {
+        for(int i = 0; i < datas.count(); i++)
+        {
+            DataUnit u = datas[i];
+            QString desc = u.desc;
+            if(desc.replace(" ", "_") == le->objectName())
+            {
+                u.value = le->text().split(",");
                 datas[i] = u;
                 break;
             }

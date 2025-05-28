@@ -123,7 +123,9 @@ CONFIG += c++17
 
 # 作为编译器C预处理器宏(-D选项)
 # QT_DEPRECATED_WARNINGS表示当Qt的某些功能被标记为过时的，那么编译器会发出警告。
-DEFINES += QT_DEPRECATED_WARNINGS
+DEFINES += QT_DEPRECATED_WARNINGS\
+           WIN32_LEAN_AND_MEAN\
+           ENET_IMPLEMENTATION
 
 #应用程序图表
 RC_ICONS          = $$PWD/res/image/logo.ico
@@ -145,6 +147,7 @@ TARGET            = D-Cogni
 #应用程序输出路径
 Debug::DESTDIR    += $$PWD/../bin/debug
 Release::DESTDIR  += $$PWD/../bin/release
+
 
 #基础依赖文件
 include( $$PWD/../../cf/base/base.pri )
@@ -169,7 +172,8 @@ CONFIG(debug, debug|release)
                  -lQtitanGridd7\
                  -lQtitanStyled2\
                  -lQtitanRibbond6\
-                 -lQtitanRibbonDesignerd6
+                 -lQtitanRibbonDesignerd6\
+                 -lQtitanNavigationDesignUId3
 }
 CONFIG(release, debug|release)
 {
@@ -180,7 +184,8 @@ CONFIG(release, debug|release)
                  -lQtitanFastInfoset2\
                  -lQtitanGrid7\
                  -lQtitanStyle2\
-                 -lQtitanRibbon6
+                 -lQtitanRibbon6\
+                 -lQtitanNavigationDesignUI3
 }
 win32
 {
@@ -204,32 +209,48 @@ unix
 
 #依赖文件夹
 INCLUDEPATH   += \
-                $$PWD/form
+                $$PWD/form\
+                $$PWD/model/data
 
-HEADERS       = business/lib_handle.h\
-                form/mainwindow.h\
-                form/aboutdialog.h \
-                form/dock_window.h \
-                form/glwidget.h \
-                form/menu_file.h \
-                form/menu_view.h \
-                form/menu_view_app_type.h \
-                form/panel_base.h \
-                form/panel_data.h \
-                form/panel_list.h
 
-SOURCES       = business/lib_handle.cpp\
+HEADERS       += business/lib_handle.h\
+                model/data/data_device.h \
+                model/business/enet_broadcast_client.h\
+                model/business/local_db.h\
+                view/new_project_page_attribute.h \
+                view/new_project_page_network.h \
+                view/new_project_window.h \
+                view/settings.h\
+                view/mainwindow.h\
+                view/aboutdialog.h \
+                view/dock_window.h \
+                view/glwidget.h \
+                view/menu_file.h \
+                view/menu_view.h \
+                view/menu_view_app_type.h \
+                view/panel_base.h \
+                view/panel_data.h \
+                view/panel_list.h
+
+SOURCES       += business/lib_handle.cpp\
+                model/data/data_device.cpp \
+                model/business/enet_broadcast_client.cpp\
+                model/business/local_db.cpp\
+                view/new_project_page_attribute.cpp \
+                view/new_project_page_network.cpp \
+                view/new_project_window.cpp \
                 src/main.cpp \
-                form/dock_window.cpp \
-                form/glwidget.cpp \
-                form/mainwindow.cpp\
-                form/aboutdialog.cpp \
-                form/menu_file.cpp \
-                form/menu_view.cpp \
-                form/menu_view_app_type.cpp \
-                form/panel_base.cpp \
-                form/panel_data.cpp \
-                form/panel_list.cpp
+                view/settings.cpp\
+                view/dock_window.cpp \
+                view/glwidget.cpp \
+                view/mainwindow.cpp\
+                view/aboutdialog.cpp \
+                view/menu_file.cpp \
+                view/menu_view.cpp \
+                view/menu_view_app_type.cpp \
+                view/panel_base.cpp \
+                view/panel_data.cpp \
+                view/panel_list.cpp
 
 FORMS         += \
                 res/mainwindow.ui\

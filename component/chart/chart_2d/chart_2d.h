@@ -28,6 +28,9 @@ public:
     //追加数据
     int add_data(const QString& id, const QVector<double>& x, const QVector<double>& y) override;
 
+    //数据绘制
+    int replot() override;
+
     ////////////////////////////////////////////////////////////////////////////////////////
     ///第三部分：输出接口
     //获取属性配置界面句柄

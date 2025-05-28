@@ -14,8 +14,8 @@ property_json::property_json(const property_data& data)
 int property_json::set(const QString &buf)
 {
     QVector<DataUnit> v;
-    QJsonDocument doc = QJsonDocument::fromJson(buf.toLocal8Bit().data());
-    if(doc.isNull() || doc.isArray()) return RES_ERR_IPUT_PARM;
+    QJsonDocument doc = QJsonDocument::fromJson(buf.toUtf8().data());
+    if(doc.isNull() || !doc.isArray()) return RES_ERR_IPUT_PARM;
 
     QJsonArray array = doc.array();
     for(int i = 0; i < array.size(); i++)
@@ -29,7 +29,7 @@ int property_json::set(const QString &buf)
            || !obj.contains(_last_variable_string(STR(_.value))))
             return RES_ERR_IPUT_PARM;
 
-        _.uuid = obj.value(_last_variable_string(STR(_.uuid))).toInt();
+        _.uuid = obj.value(_last_variable_string(STR(_.uuid))).toVariant().toLongLong();
         _.desc = obj.value(_last_variable_string(STR(_.desc))).toString();
         _.value = obj.value(_last_variable_string(STR(_.value))).toVariant();
         v.append(_);

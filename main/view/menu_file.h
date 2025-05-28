@@ -10,6 +10,11 @@ class menu_file : public QObject
     Q_OBJECT
 public:
     menu_file(QMenu* menu);
+private Q_SLOTS:
+    void slot_new();
+    void slot_open();
+    void slot_save();
+    void slot_close();
 private:
     void add_actions();
 private:

@@ -20,11 +20,12 @@ bool release_lib(abstract_component** component)
 {
     if(component == NULL || (*component) == NULL) return false;
 
+    std::string name = (*component)->info().name.toStdString();
     A_C* p = (A_C*)*component;
     delete p;
     p = NULL;
 
-    LOGINFO("release component name = %s", (*component)->info().name.toStdString().c_str());
+    LOGINFO("release component name = %s", name.c_str());
 
     return true;
 }

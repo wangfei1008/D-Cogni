@@ -10,7 +10,9 @@ MainWindow::MainWindow(QWidget *parent)
     lib_handle lib("chart_2d");
     abstract_component* p = lib.create();
     ui->horizontalLayout->addWidget(p->plot());
+    p->property()->setFixedWidth(300);
     ui->verticalLayout->addWidget(p->property());
+
     QString as = p->json_property();
 
     QVector<double> x, y;
@@ -25,6 +27,7 @@ MainWindow::MainWindow(QWidget *parent)
     y.clear();
     y << 8 << 6 << 4;
     p->set_data("aaaa", x,y);
+    //lib.release();
 }
 
 MainWindow::~MainWindow()

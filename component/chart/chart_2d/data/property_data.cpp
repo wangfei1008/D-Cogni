@@ -70,4 +70,11 @@ void property_data::_init()
 
     index = m_vector.count();
     m_vector.insert(index + 0, DataUnit((unsigned long long)&PROPERTY_INTERACTIONS_MOUSE, "mouse operation", PROPERTY_INTERACTIONS_MOUSE, NULL));
+
+    index = m_vector.count();
+    m_vector.insert(index + 0, DataUnit((unsigned long long)&PROPERTY_CH_RECT_LABEL_LEFT, PROPERTY_CH_RECT_LABEL_LEFT, "", NULL));
+    m_vector.insert(index + 0, DataUnit((unsigned long long)&PROPERTY_CH_RECT_LABEL_RIGHT, PROPERTY_CH_RECT_LABEL_RIGHT, "", NULL));
+    m_vector.insert(index + 0, DataUnit((unsigned long long)&PROPERTY_CH_RECT_LABEL_TOP, PROPERTY_CH_RECT_LABEL_TOP, "", NULL));
+    m_vector.insert(index + 0, DataUnit((unsigned long long)&PROPERTY_CH_RECT_LABEL_BOTTOM, PROPERTY_CH_RECT_LABEL_BOTTOM, "", NULL));
+
  }

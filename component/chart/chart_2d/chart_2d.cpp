@@ -37,6 +37,7 @@ int chart_2d::set_json_property(const QString &property)
 {
     property_json json(m_data);
     json.set(property);
+    m_data.set_datas(json.datas());
     return RES_SUCCESS;
 }
 
@@ -54,6 +55,11 @@ int chart_2d::set_data(const QString& id, const QVector<double>& x, const QVecto
 int chart_2d::add_data(const QString& id, const QVector<double>& x, const QVector<double>& y)
 {
     return ((plot_widget*)m_plot)->add_data(id, x, y);;
+}
+
+int chart_2d::replot()
+{
+    return ((plot_widget*)m_plot)->replot();
 }
 
 QWidget* chart_2d::property()

@@ -15,6 +15,7 @@ public:
     plot_widget(property_data* data, QWidget *parent = nullptr);
     int set_data(const QString& id, const QVector<double>& x, const QVector<double>& y);
     int add_data(const QString& id, const QVector<double>& x, const QVector<double>& y);
+    int replot();
 
     //更新所有界面配置
     int updata_property();

@@ -21,6 +21,9 @@ public:
     //获取坐标轴显示方式
     bool axis_visable(int index);
 
+    //获取坐标轴显示标签
+    QString axis_label(int ch, int index);
+
     //获取是否支持自动缩放
     bool auto_scale();
 

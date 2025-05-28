@@ -8,6 +8,9 @@ plot_widget::plot_widget(property_data* data, QWidget *parent)
 {
     this->plotLayout()->clear();
     _init();
+    // this->plotLayout()->insertRow(0);
+    // QCPTextElement *title = new QCPTextElement(this, QStringLiteral("力-位移曲线"), QFont("sans", 17, QFont::Bold));
+    // this->plotLayout()->addElement(0, 0, title);
 }
 
 int plot_widget::set_data(const QString &id, const QVector<double> &x, const QVector<double> &y)
@@ -42,6 +45,12 @@ int plot_widget::add_data(const QString &id, const QVector<double> &x, const QVe
     _set_channel_property(id);
 
     return res;
+}
+
+int plot_widget::replot()
+{
+    QCustomPlot::replot();
+    return RES_SUCCESS;
 }
 
 int plot_widget::updata_property()
@@ -248,6 +257,13 @@ void plot_widget::_set_channel_property(const QString &id)
     channel_map::set_grid_random_color(id);
     if((merge_type & 0x01) || (merge_type & 0x04)) channel_map::set_axis_random_color(id, QCPAxis::atBottom);
     if((merge_type & 0x02) || (merge_type & 0x08)) channel_map::set_axis_random_color(id, QCPAxis::atLeft);
+
+    //设置轴标签
+    int ch = channel_name_index(id);
+    set_axis_label(id, QCPAxis::AxisType::atBottom, m_data.axis_label(ch,QCPAxis::AxisType::atBottom));
+    set_axis_label(id, QCPAxis::AxisType::atTop, m_data.axis_label(ch,QCPAxis::AxisType::atTop));
+    set_axis_label(id, QCPAxis::AxisType::atLeft, m_data.axis_label(ch,QCPAxis::AxisType::atLeft));
+    set_axis_label(id, QCPAxis::AxisType::atRight, m_data.axis_label(ch,QCPAxis::AxisType::atRight));
 
     //是否支持自动缩放
     set_auto_scale(id, m_data.auto_scale());

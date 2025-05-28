@@ -58,7 +58,7 @@ INCLUDEPATH   += \
                 $$PWD/business\
                 $$PWD/third
 
-HEADERS       = \
+HEADERS       += \
                 business/concrete_mediator.h \
                 business/mediator.h \
                 business/plot_business_data.h \
@@ -74,7 +74,7 @@ HEADERS       = \
                 view/plot_widget.h \
                 view/property_widget.h
 
-SOURCES       = \
+SOURCES       += \
                 business/concrete_mediator.cpp \
                 business/mediator.cpp \
                 business/plot_business_data.cpp \
