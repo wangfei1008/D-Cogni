@@ -55,7 +55,6 @@ public:
     virtual int set_data(const QString& id, const QVector<double>& x, const QVector<double>& y) = 0;
     //追加数据
     virtual int add_data(const QString& id, const QVector<double>& x, const QVector<double>& y) = 0;
-
     //数据绘制
     virtual int replot() = 0;
 
@@ -65,6 +64,8 @@ public:
     virtual QWidget* property() = 0;
     //获取图形显示界面句柄
     virtual QWidget* plot() = 0;
+    //保存
+    virtual int save(const QString& path) = 0;
 public:
     //GETSET(string, name);                                           //组件名称
 };

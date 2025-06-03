@@ -34,3 +34,7 @@
 /component/bin
 /thrid/QtitanComponents2023.1.0
 /x64
+*.filters
+*.qtvscr
+*.sln
+*.vcxproj

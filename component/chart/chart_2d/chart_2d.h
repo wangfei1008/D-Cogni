@@ -37,6 +37,8 @@ public:
     QWidget* property() override;
     //获取图形显示界面句柄
     QWidget* plot() override;
+    //保存
+    int save(const QString& path) override;
 private:
     ComponentInfo                   m_info;                       //插件信息
     QWidget                         *m_property;                  //属性界面

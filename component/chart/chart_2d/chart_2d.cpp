@@ -71,3 +71,9 @@ QWidget* chart_2d::plot()
 {
     return m_plot;
 }
+
+int chart_2d::save(const QString &path)
+{
+    QPixmap pixmap = ((plot_widget*)m_plot)->grab();
+    return pixmap.save(path) ? RES_SUCCESS : RES_ERR_WRITE_IO;
+}
